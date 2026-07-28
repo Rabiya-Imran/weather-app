@@ -1,0 +1,110 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100vh; /* Replaced 100% to prevent background clipping on scroll */
+  margin: 0;
+  background-color: #1e293b;
+  padding: 0;
+  font-family: "Goudy Bookletter 1911", sans-serif;
+  position: relative;
+  isolation: isolate; /* Keeps text layered perfectly on top */
+}
+body::before {
+  content: "";
+  position: fixed; /* Keeps background locked in place while scrolling */
+  inset: 0; /* Fills the whole screen */
+  z-index: -1; /* Pushes image behind text */
+
+  background-image: url("assets/images/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0.6; /* ADJUST OPACITY HERE (0.0 to 1.0) */
+}
+ .main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+} 
+.temp-num {
+  font-size: 70px;
+  font-weight: bold;
+  margin: 0;
+}
+p {
+  color: white;
+}
+.search-city {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+.search-bar {
+  padding: 10px 20px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: black;
+}
+.search-button {
+  padding: 10px 15px;
+  color: black;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.secondary-details {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+.humidity,
+.wind,
+.precip {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+.secondary-details > div {
+  flex: 1; /*Makes all columns equal width */
+  text-align: center; /* Centers the text and line */
+}
+.secondary-details hr {
+  border: none;
+  height: 1px;
+  background-color: #fcefef; /* Dark line color */
+  margin: 8px 0; /* Adjusts spacing above and below the line */
+}
+.temp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the inner items horizontally */
+  justify-content: center; /* Centers the inner items vertically if height expands */
+  text-align: center; /* Centers the actual text lines */
+  padding: 40px 20px; /* Increases vertical spacing for a cleaner look */
+}
+.five-days-forecast {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 40px 20px;
+  width: 80%;
+  height: 50px;
+  border-top: 2px solid #ffffff75;
+  border-right: 2px solid #ffffff75;
+  box-shadow: 5px 5px 12px #00000035;
+  background: #ffffff25;
+  border-radius: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+  position: center;
+}
