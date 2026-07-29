@@ -21,13 +21,13 @@ body::before {
   background-position: center;
   background-repeat: no-repeat;
 
-  opacity: 0.6; /* ADJUST OPACITY HERE (0.0 to 1.0) */
+  opacity: 0.6;
 }
  .main{
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: space-evenly;
 } 
 .temp-num {
   font-size: 70px;
@@ -38,6 +38,7 @@ p {
   color: white;
 }
 .search-city {
+  margin-top: 20px;
   padding: 20px;
   display: flex;
   flex-direction: row;
@@ -66,6 +67,9 @@ p {
   display: flex;
   flex-direction: row;
   padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
 }
 .humidity,
 .wind,
@@ -91,14 +95,18 @@ p {
   justify-content: center; /* Centers the inner items vertically if height expands */
   text-align: center; /* Centers the actual text lines */
   padding: 40px 20px; /* Increases vertical spacing for a cleaner look */
+  margin-top: 30px;
 }
 .five-days-forecast {
   display: flex;
   flex-direction: row;
-  padding: 0;
-  margin: 40px 20px;
+  justify-content: space-around;
+  align-items: center;
+  padding:  15px 25px;
+  margin: 40px auto;
   width: 80%;
-  height: 50px;
+  max-width: 600px;
+  box-sizing: border-box;
   border-top: 2px solid #ffffff75;
   border-right: 2px solid #ffffff75;
   box-shadow: 5px 5px 12px #00000035;
@@ -106,5 +114,33 @@ p {
   border-radius: 15px;
   overflow: hidden;
   backdrop-filter: blur(4px);
-  position: center;
+
 }
+.forecast-day {
+  display: flex;
+  flex-direction: column;         /* Stacks Day, Icon, and Temp vertically */
+  align-items: center;            /* Centers items horizontally within column */
+  gap: 4px;                       /* Creates unified spacing between text and icon */
+  flex: 1;                        /* Allocates equal horizontal space to every day */
+}
+
+.forecast-day p {
+  margin: 0;                      /* Clears default paragraph spacing breaking layouts */
+  font-size: 16px;
+}
+
+.weather-icon {
+  width: 40px;                    /* Restricts icon sizes from blowing out card boxes */
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Style for clean vertical dividing lines */
+.vertical-divider {
+  border: none;
+  width: 1px;
+  height: 40px;                   /* Constrains line height inside the flex box */
+  background-color: #ffffff40;    /* Muted transparent line matching design theme */
+  margin: 0;
+}
+
