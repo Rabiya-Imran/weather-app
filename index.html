@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link rel="preconnect" href="https://googleapis.com" />
+    <link rel="preconnect" href="https://gstatic.com" crossorigin />
+    <link
+      href="https://googleapis.com/css2?family=Inter:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -20,8 +26,11 @@
           <p>Sunday, 26 July</p>
         </div>
         <div class="temp">
-          <p class="temp-num">33 C</p>
-          <p>Partly Cloudy</p>
+          <p class="temp-num">33° C</p>
+          <div class="weather-discription">
+            <img class="weather-icon" src="" alt="weather icon" />
+            <p>Partly Cloudy</p>
+          </div>
         </div>
       </div>
       <!--Secondary Details-->
@@ -46,31 +55,31 @@
       <div class="five-days-forecast">
         <div class="forecast-day">
           <p>Mon</p>
-          <img class="weather-icon" src="" alt="weather icon" />
+          <img class="weather-icon0" src="" alt="weather icon" />
           <p>30°C</p>
         </div>
         <hr class="vertical-divider" />
         <div class="forecast-day">
           <p>Tues</p>
-          <img class="weather-icon" src="" alt="weather icon" />
+          <img class="weather-icon1" src="" alt="weather icon" />
           <p>30°C</p>
         </div>
         <hr class="vertical-divider" />
         <div class="forecast-day">
           <p>Wed</p>
-          <img class="weather-icon" src="" alt="weather icon" />
+          <img class="weather-icon2" src="" alt="weather icon" />
           <p>30°C</p>
         </div>
         <hr class="vertical-divider" />
         <div class="forecast-day">
           <p>Thurs</p>
-          <img class="weather-icon" src="" alt="weather icon" />
+          <img class="weather-icon3" src="" alt="weather icon" />
           <p>30°C</p>
         </div>
         <hr class="vertical-divider" />
         <div class="forecast-day">
           <p>Fri</p>
-          <img class="weather-icon" src="" alt="weather icon" />
+          <img class="weather-icon4" src="" alt="weather icon" />
           <p>30°C</p>
         </div>
       </div>

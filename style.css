@@ -1,75 +1,96 @@
+:root {
+  --card-bg: #ffffff25;
+  --card-border: #ffffff75;
+  --card-shadow: 5px 5px 12px #00000035;
+  --radius: 15px;
+  --text-color: #111111;
+}
+
 html {
   height: 100%;
 }
 body {
+  font-family: "Inter", sans-serif;
+  font-weight: 100;
   min-height: 100vh; /* Replaced 100% to prevent background clipping on scroll */
   margin: 0;
-  background-color: #1e293b;
+  background-color: #f0debd;
   padding: 0;
-  font-family: "Goudy Bookletter 1911", sans-serif;
   position: relative;
   isolation: isolate; /* Keeps text layered perfectly on top */
 }
-body::before {
-  content: "";
-  position: fixed; /* Keeps background locked in place while scrolling */
-  inset: 0; /* Fills the whole screen */
-  z-index: -1; /* Pushes image behind text */
-
-  background-image: url("assets/images/background.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity: 0.6;
-}
- .main{
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-} 
+}
 .temp-num {
-  font-size: 70px;
-  font-weight: bold;
+  font-size: 100px;
   margin: 0;
+  font-weight: 200; /* Slightly heavier so the hero number doesn't disappear at weight 100 */
 }
 p {
-  color: white;
+  color: var(--text-color);
 }
 .search-city {
   margin-top: 20px;
-  padding: 20px;
+  padding: 12px 20px;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 10px;
+  width: fit-content;
+  box-sizing: border-box;
+  border-top: 2px solid var(--card-border);
+  border-right: 2px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  backdrop-filter: blur(4px);
 }
 .search-bar {
   padding: 10px 20px;
-  background: white;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  background: #ffffff40;
+  border-radius: calc(var(--radius) - 8px);
+  border: 1px solid var(--card-border);
   font-size: 16px;
-  color: black;
+  color: var(--text-color);
+}
+.search-bar::placeholder {
+  color: #333333aa;
 }
 .search-button {
   padding: 10px 15px;
-  color: black;
-  border: 1px solid #ccc;
-  background: white;
-  border-radius: 5px;
+  color: var(--text-color);
+  border: 1px solid var(--card-border);
+  background: #ffffff40;
+  border-radius: calc(var(--radius) - 8px);
   cursor: pointer;
   font-size: 16px;
+  transition: background 0.2s ease;
 }
+.search-button:hover {
+  background: #ffffff70;
+}
+
+/* Secondary details now share the same "glass card" treatment as the
+   5-day forecast card below, instead of sitting as bare text on the page */
 .secondary-details {
   display: flex;
   flex-direction: row;
-  padding: 20px;
-  width: 100%;
+  padding: 15px 25px;
+  width: 80%;
   max-width: 600px;
   box-sizing: border-box;
+  border-top: 2px solid var(--card-border);
+  border-right: 2px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  backdrop-filter: blur(4px);
+  margin: 0 auto;
 }
 .humidity,
 .wind,
@@ -79,13 +100,25 @@ p {
   font-size: 20px;
 }
 .secondary-details > div {
-  flex: 1; /*Makes all columns equal width */
+  flex: 1; /* Makes all columns equal width */
   text-align: center; /* Centers the text and line */
 }
+
+/* Emoji added via ::before so the HTML text content stays untouched */
+.humidity p:first-child::before {
+  content: "💧 ";
+}
+.wind p:first-child::before {
+  content: "💨 ";
+}
+.precip p:first-child::before {
+  content: "🌧️ ";
+}
+
 .secondary-details hr {
   border: none;
   height: 1px;
-  background-color: #fcefef; /* Dark line color */
+  background-color: var(--text-color); /* Dark line color */
   margin: 8px 0; /* Adjusts spacing above and below the line */
 }
 .temp-container {
@@ -97,40 +130,54 @@ p {
   padding: 40px 20px; /* Increases vertical spacing for a cleaner look */
   margin-top: 30px;
 }
+
+/* Consistent vertical rhythm between the three stacked cards */
+.temp-container,
+.secondary-details,
+.five-days-forecast {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
 .five-days-forecast {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding:  15px 25px;
-  margin: 40px auto;
+  padding: 15px 25px;
+  margin: 25px auto;
   width: 80%;
   max-width: 600px;
   box-sizing: border-box;
-  border-top: 2px solid #ffffff75;
-  border-right: 2px solid #ffffff75;
-  box-shadow: 5px 5px 12px #00000035;
-  background: #ffffff25;
-  border-radius: 15px;
+  border-top: 2px solid var(--card-border);
+  border-right: 2px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  background: var(--card-bg);
+  border-radius: var(--radius);
   overflow: hidden;
   backdrop-filter: blur(4px);
-
 }
 .forecast-day {
   display: flex;
-  flex-direction: column;         /* Stacks Day, Icon, and Temp vertically */
-  align-items: center;            /* Centers items horizontally within column */
-  gap: 4px;                       /* Creates unified spacing between text and icon */
-  flex: 1;                        /* Allocates equal horizontal space to every day */
+  flex-direction: column; /* Stacks Day, Icon, and Temp vertically */
+  align-items: center; /* Centers items horizontally within column */
+  gap: 4px; /* Creates unified spacing between text and icon */
+  flex: 1; /* Allocates equal horizontal space to every day */
 }
 
 .forecast-day p {
-  margin: 0;                      /* Clears default paragraph spacing breaking layouts */
+  margin: 0; /* Clears default paragraph spacing breaking layouts */
   font-size: 16px;
+  color: var(--text-color);
 }
 
-.weather-icon {
-  width: 40px;                    /* Restricts icon sizes from blowing out card boxes */
+.weather-icon,
+.weather-icon0,
+.weather-icon1,
+.weather-icon2,
+.weather-icon3,
+.weather-icon4 {
+  width: 40px; /* Restricts icon sizes from blowing out card boxes */
   height: 40px;
   object-fit: contain;
 }
@@ -139,8 +186,14 @@ p {
 .vertical-divider {
   border: none;
   width: 1px;
-  height: 40px;                   /* Constrains line height inside the flex box */
-  background-color: #ffffff40;    /* Muted transparent line matching design theme */
+  height: 40px; /* Constrains line height inside the flex box */
+  background-color: #ffffff40; /* Muted transparent line matching design theme */
   margin: 0;
 }
-
+.weather-discription {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Centered instead of space-around now that it's icon + one line of text, not stretched across a wide container */
+  gap: 8px;
+}
